@@ -9,7 +9,7 @@ interface SectionTitleProps {
 }
 
 export function SectionTitle({ title, highlight, className }: SectionTitleProps) {
-  const shouldShowLine = title !== "My Projects, Papers & Writing";
+  const shouldShowLine = title !== "My Papers, Projects & Writing";
   
   return (
     <h2 className={cn("text-3xl md:text-4xl font-bold text-center mb-4 group relative", className)}>

@@ -86,7 +86,7 @@ export function ProjectsSection() {
     return (
       <section id="projects" className="py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4">
-          <SectionTitle title="My Projects, Papers & Writing" highlight="Projects" />
+          <SectionTitle title="My Papers, Projects & Writing" highlight="Papers" />
           <div className="animate-pulse">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[...Array(6)].map((_, i) => (
@@ -102,7 +102,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4">
-        <SectionTitle title="My Projects, Papers & Writing" highlight="Projects" />
+        <SectionTitle title="My Papers, Projects & Writing" highlight="Papers" />
         
         {researchPapers.length > 0 && (
           <>
