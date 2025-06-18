@@ -36,6 +36,13 @@ function ResearchPaperItem({ paper, index }: { paper: Project, index: number }) 
       )}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
+      {paper.imageUrl && (
+        <img
+          src={paper.imageUrl}
+          alt={paper.imageHint || paper.title}
+          className="w-full h-48 object-cover rounded-md mb-4 border"
+        />
+      )}
       <h4 className="text-lg font-semibold text-primary mb-1">{paper.title}</h4>
       <p className="text-sm text-muted-foreground">
         {paper.authors?.join(', ')}{year ? ` • ${year}` : ''}
@@ -104,6 +111,22 @@ export function ProjectsSection() {
       <div className="container mx-auto px-4">
         <SectionTitle title="My Projects, Papers & Writing" highlight="Projects" />
         
+        {researchPapers.length > 0 && (
+          <>
+            <ParallaxSectionHeader 
+              title="Research Papers" 
+              backgroundImageUrl="https://picsum.photos/seed/sectionbg/1920/300"
+              imageHint="abstract texture"
+              backgroundText="papers"
+            />
+            <div className="space-y-6 max-w-3xl mx-auto mt-12">
+              {researchPapers.map((paper, index) => (
+                <ResearchPaperItem paper={paper} index={index} key={paper.id} />
+              ))}
+            </div>
+          </>
+        )}
+
         {regularProjects.length > 0 && (
           <>
             <SectionTitle title="Software Projects" highlight="Projects" className="text-2xl md:text-3xl mb-8 mt-2" />
@@ -120,22 +143,6 @@ export function ProjectsSection() {
                   Visit my GitHub
                 </Link>
               </Button>
-            </div>
-          </>
-        )}
-
-        {researchPapers.length > 0 && (
-          <>
-            <ParallaxSectionHeader 
-              title="Research Papers" 
-              backgroundImageUrl="https://picsum.photos/seed/sectionbg/1920/300"
-              imageHint="abstract texture"
-              backgroundText="papers"
-            />
-            <div className="space-y-6 max-w-3xl mx-auto mt-12">
-              {researchPapers.map((paper, index) => (
-                <ResearchPaperItem paper={paper} index={index} key={paper.id} />
-              ))}
             </div>
           </>
         )}
