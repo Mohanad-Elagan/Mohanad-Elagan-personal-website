@@ -143,27 +143,14 @@ const ExperienceItemCard = ({ exp, index }: { exp: ExperienceItem; index: number
           isVisible ? "animate-pulse-heart" : ""
         )}>
           {exp.logoUrl ? (
-            exp.companyUrl ? (
-              <Link href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="w-full h-full">
-                <Image
-                  src={exp.logoUrl}
-                  alt={`${exp.company} logo`}
-                  width={120}
-                  height={120}
-                  className="rounded-full object-contain hover:scale-105 transition-transform duration-300"
-                  data-ai-hint={exp.imageHint || "company logo"}
-                />
-              </Link>
-            ) : (
-              <Image
-                src={exp.logoUrl}
-                alt={`${exp.company} logo`}
-                width={120}
-                height={120}
-                className="rounded-full object-contain"
-                data-ai-hint={exp.imageHint || "company logo"}
-              />
-            )
+            <Image
+              src={exp.logoUrl}
+              alt={`${exp.company} logo`}
+              width={120}
+              height={120}
+              className="rounded-full object-contain"
+              data-ai-hint={exp.imageHint || "company logo"}
+            />
           ) : (
             <Briefcase className="w-16 h-16 text-primary" />
           )}
@@ -179,29 +166,9 @@ const ExperienceItemCard = ({ exp, index }: { exp: ExperienceItem; index: number
               isVisible ? "animate-pulse-heart" : ""
             )}>
             {exp.logoUrl ? (
-              exp.companyUrl ? (
-                <Link href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="w-full h-full">
-                  <Image 
-                    src={exp.logoUrl} 
-                    alt={`${exp.company} logo`} 
-                    width={56} 
-                    height={56} 
-                    className="rounded-full object-contain hover:scale-105 transition-transform duration-300" 
-                    data-ai-hint={exp.imageHint || "company logo"} 
-                  />
-                </Link>
-              ) : (
-                <Image 
-                  src={exp.logoUrl} 
-                  alt={`${exp.company} logo`} 
-                  width={56} 
-                  height={56} 
-                  className="rounded-full object-contain" 
-                  data-ai-hint={exp.imageHint || "company logo"} 
-                />
-              )
+                <Image src={exp.logoUrl} alt={`${exp.company} logo`} width={56} height={56} className="rounded-full object-contain" data-ai-hint={exp.imageHint || "company logo"} />
             ) : (
-              <Briefcase className="w-8 h-8 text-primary" />
+                <Briefcase className="w-8 h-8 text-primary" />
             )}
             </div>
         </div>
