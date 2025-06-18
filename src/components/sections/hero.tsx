@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -47,7 +46,7 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button size="lg" asChild className="shadow-md hover:shadow-lg transition-shadow">
             <Link href="#projects">
-              View My Projects <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
+              View My Papers & Projects <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
             </Link>
           </Button>
           <Button size="lg" variant="secondary" asChild className="shadow-md hover:shadow-lg transition-shadow">
