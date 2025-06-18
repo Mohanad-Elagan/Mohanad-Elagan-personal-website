@@ -36,13 +36,6 @@ function ResearchPaperItem({ paper, index }: { paper: Project, index: number }) 
       )}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      {paper.imageUrl && (
-        <img
-          src={paper.imageUrl}
-          alt={paper.imageHint || paper.title}
-          className="w-full h-48 object-cover rounded-md mb-4 border"
-        />
-      )}
       <h4 className="text-lg font-semibold text-primary mb-1">{paper.title}</h4>
       <p className="text-sm text-muted-foreground">
         {paper.authors?.join(', ')}{year ? ` • ${year}` : ''}
@@ -113,12 +106,7 @@ export function ProjectsSection() {
         
         {researchPapers.length > 0 && (
           <>
-            <ParallaxSectionHeader 
-              title="Research Papers" 
-              backgroundImageUrl="https://picsum.photos/seed/sectionbg/1920/300"
-              imageHint="abstract texture"
-              backgroundText="papers"
-            />
+            <SectionTitle title="Research Papers" highlight="Papers" className="mb-8" />
             <div className="space-y-6 max-w-3xl mx-auto mt-12">
               {researchPapers.map((paper, index) => (
                 <ResearchPaperItem paper={paper} index={index} key={paper.id} />

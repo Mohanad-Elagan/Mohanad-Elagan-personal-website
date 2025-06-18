@@ -13,13 +13,10 @@ interface ParallaxSectionHeaderProps {
   backgroundText?: string; // New prop for repeating background text
 }
 
-export function ParallaxSectionHeader({ title, backgroundText }: ParallaxSectionHeaderProps) {
+export function ParallaxSectionHeader({ title, backgroundImageUrl, imageHint, backgroundText }: ParallaxSectionHeaderProps) {
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ triggerOnce: true });
   const [translateY, setTranslateY] = useState(0);
   const [textTranslateX, setTextTranslateX] = useState(0);
-
-  const parallaxImageUrl = "https://picsum.photos/seed/openbooktexture/1200/800";
-  const parallaxImageHint = "open book texture";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +31,6 @@ export function ParallaxSectionHeader({ title, backgroundText }: ParallaxSection
         // Background text parallax (horizontal)
         if (backgroundText) {
           const textSpeedFactor = 0.15; // Adjust for desired speed
-          // Calculate translateX: 0 when element is at the bottom of viewport, increases as it moves up
-          // This makes text appear to scroll from left to right as the section moves up.
           const currentTextTranslateX = (viewportHeight - rect.top) * textSpeedFactor;
           setTextTranslateX(currentTextTranslateX);
         }
@@ -72,15 +67,15 @@ export function ParallaxSectionHeader({ title, backgroundText }: ParallaxSection
         className="z-0"
       >
         <Image
-          src={parallaxImageUrl}
-          alt={`${title} section background - book`}
+          src={backgroundImageUrl}
+          alt={`${title} section background - ${imageHint || 'background'}`}
           fill
           style={{ 
             objectFit: 'cover',
             transform: `translateY(${translateY}px) scale(1.2)`, 
            }}
           quality={75}
-          data-ai-hint={parallaxImageHint}
+          data-ai-hint={imageHint}
           priority
         />
       </div>
