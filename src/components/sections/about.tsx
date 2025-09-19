@@ -15,7 +15,7 @@ const coreValues = [
   { 
     icon: <Layers className="h-6 w-6 text-primary" />, 
     title: "Interdisciplinary Thinking", 
-    description: "Blending engineering, biology, and the arts to create impactful solutions that live at the intersection of science and creativity." 
+    description: "Blending engineering and the arts to create impactful solutions that live at the intersection of science and creativity." 
   },
   { 
     icon: <CheckCircle className="h-6 w-6 text-primary" />, 
@@ -50,7 +50,7 @@ export function AboutSection() {
                 <span className="block w-12 group-hover:w-full transition-all duration-500 h-0.5 bg-primary"></span>
               </h3>
               <p className="mb-4">
-                I'm Mohanad Elagan, an undergraduate student pursuing a <strong className="font-semibold">B.S. degree in Engineering Physics and Biochemistry</strong>. I combine engineering, science, and creative technology to build thoughtful, real-world solutions. My work spans software development, biomedical research, and digital design, all centered on tackling complex problems with innovation and precision.
+                I'm Mohanad Elagan, an undergraduate student pursuing a <strong className="font-semibold">B.A. degree in Computer Science and Mathematics</strong>. I combine engineering, science, and creative technology to build thoughtful, real-world solutions. My work spans software development, biomedical research, and digital design, all centered on tackling complex problems with innovation and precision.
               </p>
               <p>
                 Outside of technical projects, I explore storytelling through <strong className="font-semibold">beatboxing</strong>, <strong className="font-semibold">photography/designing</strong>, and <strong className="font-semibold">poetry</strong>, always seeking new ways to express ideas and reimagine what&apos;s possible.
