@@ -50,7 +50,7 @@ export function AboutSection() {
                 <span className="block w-12 group-hover:w-full transition-all duration-500 h-0.5 bg-primary"></span>
               </h3>
               <p className="mb-4">
-                I'm Mohanad Elagan, an undergraduate student pursuing a <strong className="font-semibold">B.A. degree in Computer Science and Mathematics</strong>. I combine engineering, science, and creative technology to build thoughtful, real-world solutions. My work spans software development, biomedical research, and digital design, all centered on tackling complex problems with innovation and precision.
+                I'm Mohanad Elagan, an undergraduate student pursuing a <strong className="font-semibold">B.A. degree in Neuroscience and Mathematics with a minor in Computer Science</strong>.
               </p>
               <p>
                 Outside of technical projects, I explore storytelling through <strong className="font-semibold">beatboxing</strong>, <strong className="font-semibold">photography/designing</strong>, and <strong className="font-semibold">poetry</strong>, always seeking new ways to express ideas and reimagine what&apos;s possible.
