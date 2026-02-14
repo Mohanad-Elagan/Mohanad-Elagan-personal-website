@@ -71,7 +71,7 @@ const experiences: ExperienceItem[] = [
     location: 'Remote',
     startDate: '05/2025',
     endDate: '08/2025',
-    description: '• Automated behavioral and clinical data analysis pipelines using R and Python to improve efficiency (~90%).\n• Curated health and behavioral datasets for reproducible research, pediatric screening, and early intervention.',
+    description: '• Automated behavioral and clinical data analysis pipelines using R and Python to improve efficiency.\n• Curated health and behavioral datasets for reproducible research, pediatric screening, and early intervention.',
     logoUrl: '/img/n1.jpg',
     imageHint: "N=1 Collaborative logo",
     skills: ['R', 'Python', 'Clinical Data', 'Behavioral Data', 'Pediatric Screening', 'Reproducible Research', 'Data Pipelines'],
