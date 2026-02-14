@@ -65,7 +65,7 @@ const experiences: ExperienceItem[] = [
   },
   {
     id: 'exp7',
-    title: 'Software Development Intern',
+    title: 'Clinical Research Data Intern',
     company: 'N=1 Collaborative',
     companyUrl: 'https://www.n1collab.com/',
     location: 'Remote',
