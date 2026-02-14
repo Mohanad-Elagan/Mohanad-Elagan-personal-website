@@ -1,11 +1,30 @@
 import type { SkillCategory } from '@/types/portfolio';
-import { Code2, Database, Server, Smartphone, Cog, Palette, Feather, BarChart3, Microscope } from 'lucide-react';
-import type { ReactNode } from 'react'; // Import ReactNode if it's not globally available
+import { Code2, Database, Smartphone, Cog, Palette, BarChart3, Microscope, Brain } from 'lucide-react';
+import type { ReactNode } from 'react';
 
-// Helper to ensure icons are valid ReactNodes, satisfying the SkillCategory type more explicitly.
 const createIcon = (icon: ReactNode): ReactNode => icon;
 
 export const skillCategories: SkillCategory[] = [
+  {
+    name: "Clinical Research",
+    skills: ["IRB/CITI", "behavioral experiments", "Qualtrics", "clinical interviews", "psychometrics & assessment"],
+    icon: createIcon(<Brain className="h-6 w-6 text-primary" />)
+  },
+  {
+    name: "Quantitative Methods",
+    skills: ["regression", "mixed-effects models", "ANOVA", "power analysis", "data cleaning", "visualization"],
+    icon: createIcon(<BarChart3 className="h-6 w-6 text-primary" />)
+  },
+  {
+    name: "Research Tools",
+    skills: ["Jupyter", "Git", "Linux", "Docker", "AWS", "LaTeX"],
+    icon: createIcon(<Cog className="h-6 w-6 text-primary" />)
+  },
+  {
+    name: "Laboratory",
+    skills: ["cell culture", "ELISA", "confocal imaging", "ECM/rheology assays", "chromatography/GC", "3D bioprinting"],
+    icon: createIcon(<Microscope className="h-6 w-6 text-primary" />)
+  },
   {
     name: "Programming Languages",
     skills: ["Python", "C/C++", "MATLAB", "JavaScript (ES6+)", "TypeScript", "PHP", "Ruby", "SQL", "Bash"],
@@ -15,11 +34,6 @@ export const skillCategories: SkillCategory[] = [
     name: "Frontend Development",
     skills: ["HTML", "CSS", "React", "Next.js", "Tailwind CSS"],
     icon: createIcon(<Smartphone className="h-6 w-6 text-primary" />)
-  },
-  {
-    name: "Backend Development",
-    skills: ["Node.js", "Python (Django/Flask)"],
-    icon: createIcon(<Server className="h-6 w-6 text-primary" />)
   },
   {
     name: "Databases",
@@ -35,20 +49,5 @@ export const skillCategories: SkillCategory[] = [
     name: "Design & IT Skills",
     skills: ["Adobe Creative Suite (Adobe XD, Photoshop, Illustrator, InDesign, Premiere Pro)", "Figma", "IT Support", "Project Management"],
     icon: createIcon(<Palette className="h-6 w-6 text-primary" />)
-  },
-  {
-    name: "Laboratory Skills",
-    skills: ["Cell Culture", "DNA Gel Electrophoresis", "ELISA", "Titration", "Microscopy", "Histology Slide Preparation"],
-    icon: createIcon(<Microscope className="h-6 w-6 text-primary" />)
-  },
-  {
-    name: "DevOps & Tools",
-    skills: ["Git", "Docker", "CI/CD"],
-    icon: createIcon(<Cog className="h-6 w-6 text-primary" />)
-  },
-  {
-    name: "General Skills",
-    skills: ["Problem Solving", "Communication", "Technical Writing", "Agile Methodologies"],
-    icon: createIcon(<Feather className="h-6 w-6 text-primary" />)
   }
 ];
