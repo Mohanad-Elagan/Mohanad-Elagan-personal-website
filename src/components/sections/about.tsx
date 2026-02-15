@@ -50,10 +50,10 @@ export function AboutSection() {
                 <span className="block w-12 group-hover:w-full transition-all duration-500 h-0.5 bg-primary"></span>
               </h3>
               <p className="mb-4">
-                I'm an undergraduate student at <strong className="font-semibold">Berea College</strong> pursuing a B.A. in <strong className="font-semibold">Neuroscience (Independent Major)</strong> and <strong className="font-semibold">Mathematics</strong>, with a minor in <strong className="font-semibold">Computer Science</strong>. My independent major is intentionally structured with substantial psychology coursework, alongside technical and research training in behavioral science, health-related studies, and quantitative data-informed analysis in a clinical setting.
+                I'm an undergraduate student at <strong className="font-semibold">Berea College</strong> pursuing a B.A. in <strong className="font-semibold">Neuroscience (Independent Major)</strong> and <strong className="font-semibold">Mathematics</strong>, with a minor in <strong className="font-semibold">Computer Science</strong>. My independent major is intentionally designed to integrate substantial psychology coursework with technical and research training in behavioral science, health-related studies, and quantitative, data-informed analysis in clinically relevant contexts.
               </p>
               <p>
-                Outside of technical projects, I explore storytelling through <strong className="font-semibold">beatboxing</strong>, <strong className="font-semibold">photography/designing</strong>, and <strong className="font-semibold">poetry</strong>, always seeking new ways to express ideas and reimagine what&apos;s possible.
+                Beyond technical projects, I explore storytelling through <strong className="font-semibold">beatboxing</strong>, <strong className="font-semibold">photography/design</strong>, and <strong className="font-semibold">poetry</strong>, always seeking new ways to express ideas and reimagine what&apos;s possible.
               </p>
             </div>
           </div>

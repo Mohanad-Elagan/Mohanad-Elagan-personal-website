@@ -15,7 +15,7 @@ const logos = [
   { id: 'chicago', src: '/img/chicago.png', alt: 'Chicago Logo', hint: 'chicago logo' },
   { id: 'children', src: '/img/children.png', alt: 'Children Logo', hint: 'children logo' },
   { id: 'columbia', src: '/img/columbia.png', alt: 'Columbia Logo', hint: 'columbia logo' },
-  { id: 'ctd', src: '/img/ctd1.png', alt: 'CTD Logo', hint: 'ctd logo' },
+  { id: 'ctd', src: '/img/ctd.png', alt: 'CTD Logo', hint: 'ctd logo' },
   { id: 'hack', src: '/img/hack.png', alt: 'Hack Logo', hint: 'hack logo' },
 ];
 

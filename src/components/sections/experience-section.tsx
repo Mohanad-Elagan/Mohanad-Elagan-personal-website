@@ -26,7 +26,7 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     id: 'exp1',
-    title: 'Volunteer Research Assistant',
+    title: 'Research Assistant (Volunteer)',
     company: "The Johns Hopkins University",
     companyUrl: 'https://www.jhu.edu/',
     location: 'Remote',
@@ -35,7 +35,7 @@ const experiences: ExperienceItem[] = [
     description: 'Social & Cognitive Origins Group\n• Contributed to behavioral research on social cognition (Theory of Mind, social learning), supporting hypothesis refinement and study direction.\n• Synthesized 30+ papers on social perception/biological motion and translated insights into clear, research-ready summaries.',
     logoUrl: '/img/jhu.jpg',
     imageHint: "Johns Hopkins University logo",
-    skills: ['Social Cognition', 'Theory of Mind', 'Comparative Research', 'Literature Synthesis', 'Evolutionary Cognition'],
+    skills: ['Social Cognition', 'Theory of Mind', 'Literature Synthesis', 'Research Communication'],
   },
   {
     id: 'exp2',
@@ -48,7 +48,7 @@ const experiences: ExperienceItem[] = [
     description: '• Support learning and problem-solving through tutoring and grading, strengthening student confidence and persistence.\n• Mentor 60+ students using structured feedback and step-by-step reasoning—skills relevant to psychoeducation and assessment feedback.',
     logoUrl: '/img/bc.png',
     imageHint: "college logo",
-    skills: ['Tutoring', 'Instructional Design', 'Sensory Perception', 'Collaboration', 'Assessment'],
+    skills: ['Tutoring', 'Mentoring', 'Assessment Feedback', 'Communication'],
   },
   {
     id: 'exp6',
@@ -58,7 +58,7 @@ const experiences: ExperienceItem[] = [
     location: 'Boston, Massachusetts',
     startDate: '05/2025',
     endDate: '08/2025',
-    description: 'Cardiac Surgery Department, Mass General Brigham (BWH, MGB)\n• Conducted clinical research integrating psychophysiology risk factors with health outcomes to support evidence-based decision-making.\n• Analyzed 4,000+ cases and incorporated family/caregiver + social-context variables to inform risk stratification and outcome modeling.\n• Developed tunable hydrogels and 3D-printed vascular scaffolds to study mechanobiology and cell–material interactions.',
+    description: 'Cardiac Surgery Department, Mass General Brigham (BWH, MGB)\n• Conducted clinical research integrating psychophysiological and psychosocial risk factors with health outcomes to support evidence-based decision-making.\n• Analyzed 4,000+ cases; incorporated family/caregiver and social-context variables for risk stratification and outcome modeling.\n• Contributed to tissue-engineering experiments (hydrogels/3D-printed scaffolds) supporting mechanobiology studies.',
     logoUrl: '/img/BWH.png',
     imageHint: "hospital research logo",
     skills: ['Clinical Research', 'Psychophysiology', 'Psychosocial Assessment', 'Risk Stratification', 'Quantitative Analysis', 'Evidence-Based Practice'],
@@ -74,7 +74,7 @@ const experiences: ExperienceItem[] = [
     description: '• Automated behavioral and clinical data analysis pipelines using R and Python to improve efficiency.\n• Curated health and behavioral datasets for reproducible research, pediatric screening, and early intervention.',
     logoUrl: '/img/n1.jpg',
     imageHint: "N=1 Collaborative logo",
-    skills: ['R', 'Python', 'Clinical Data', 'Behavioral Data', 'Pediatric Screening', 'Reproducible Research', 'Data Pipelines'],
+    skills: ['R', 'Python', 'Clinical Data', 'Pediatric Screening', 'Reproducible Research'],
   },
   {
     id: 'exp8',
@@ -97,10 +97,10 @@ const experiences: ExperienceItem[] = [
     location: 'Cairo, Egypt',
     startDate: '02/2024',
     endDate: '07/2024',
-    description: '• Authored translational research building a predictive modeling diagnostic tool, transferable to pediatric assessment.\n• Supported pediatric clinical research through literature review and behavioral/clinical data analysis (SPSS).\n• Synthesized child development evidence to create analysis plans for symptom presentation and functioning.',
+    description: '• Contributed to translational research exploring predictive modeling approaches, with relevance to pediatric screening/assessment.\n• Supported pediatric clinical research via literature review and behavioral/clinical data analysis (SPSS).\n• Synthesized child development literature to inform analysis plans for symptom presentation and functional outcomes.',
     logoUrl: '/img/children.png',
     imageHint: "pediatric research logo",
-    skills: ['Predictive Modeling', 'Pediatric Assessment', 'SPSS', 'Child Development', 'Clinical Data Analysis', 'Translational Research'],
+    skills: ['Translational Research', 'SPSS', 'Pediatric Screening', 'Child Development', 'Clinical Data Analysis'],
   },
   {
     id: 'exp11',
@@ -124,7 +124,7 @@ const experiences: ExperienceItem[] = [
     startDate: '07/2022',
     endDate: '12/2023',
     description: '• Led community initiatives and managed cross-functional execution, strengthening leadership and stakeholder coordination.\n• Coordinated 30+ volunteers across multi-event programs focused on access and community support.',
-    logoUrl: '/img/ctd1.png',
+    logoUrl: '/img/ctd.png',
     imageHint: "nonprofit organization logo",
     skills: ['Leadership', 'Project Management', 'Volunteer Coordination', 'Stakeholder Coordination', 'Community Development'],
   },

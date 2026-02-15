@@ -22,12 +22,12 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: "Laboratory",
-    skills: ["cell culture", "ELISA", "confocal imaging", "ECM/rheology assays", "chromatography/GC", "3D bioprinting"],
+    skills: ["cell culture", "ELISA", "confocal imaging", "ECM/rheology assays", "3D bioprinting"],
     icon: createIcon(<Microscope className="h-6 w-6 text-primary" />)
   },
   {
     name: "Programming Languages",
-    skills: ["Python", "C/C++", "MATLAB", "JavaScript (ES6+)", "TypeScript", "PHP", "Ruby", "SQL", "Bash"],
+    skills: ["Python", "C/C++", "MATLAB", "JavaScript (ES6+)", "TypeScript", "SQL", "Bash"],
     icon: createIcon(<Code2 className="h-6 w-6 text-primary" />)
   },
   {
@@ -42,7 +42,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: "AI & Data Science",
-    skills: ["Machine Learning", "Deep Learning", "NLP", "Python (Pandas, NumPy, scikit-learn)", "TensorFlow", "PyTorch"],
+    skills: ["Machine Learning", "Deep Learning (CNNs, Transformers)", "NLP", "Python (Pandas, NumPy, scikit-learn)", "TensorFlow", "PyTorch"],
     icon: createIcon(<BarChart3 className="h-6 w-6 text-primary" />)
   },
   {
