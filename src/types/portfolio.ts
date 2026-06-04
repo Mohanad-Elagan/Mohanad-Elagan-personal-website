@@ -14,6 +14,8 @@ export interface Project {
   publication?: string; // For papers: e.g., "ACL 2023", "NeurIPS 2022"
   authors?: string[]; // For papers
   doiLink?: string; // For papers, link to DOI
+  label?: string; // Honest status label, e.g., "Working manuscript", "Conference project"
+  featured?: boolean; // Highlight as a selected (vs. archived) software project
 }
 
 export interface SkillCategory {

@@ -1,30 +1,28 @@
-
-
 import { HeroSection } from '@/components/sections/hero';
-import { ProjectsSection } from '@/components/sections/projects';
-import { AboutSection } from '@/components/sections/about';
-import { ContactSection } from '@/components/sections/contact';
-import { SkillsSection } from '@/components/sections/skills';
-import { GraphicDesignSection } from '@/components/sections/graphic-design';
-// import { CreativeWritingSection } from '@/components/sections/creative-writing'; // Removed
-import { ExperienceSection } from '@/components/sections/experience-section';
 import { CompanyLogosSection } from '@/components/sections/company-logos';
+import { CurrentlySection } from '@/components/sections/currently';
+import { ExperienceSection } from '@/components/sections/experience-section';
+import { ResearchWritingSection, SoftwareProjectsSection } from '@/components/sections/projects';
+import { JourneySection } from '@/components/sections/journey';
+import { WritingSection } from '@/components/sections/writing';
+import { CreativeSection } from '@/components/sections/creative';
+import { ContactSection } from '@/components/sections/contact';
+import { SiteReachSection } from '@/components/sections/site-reach';
 
 export default function HomePage() {
   return (
-    <div className="space-y-8 md:space-y-12 overflow-hidden"> {/* Adjusted vertical spacing & added overflow-hidden */}
-      <div> {/* Wrapper for Hero and CompanyLogos */}
-        <HeroSection />
-        <CompanyLogosSection />
-      </div>
-      <AboutSection />
+    <>
+      <HeroSection />
+      <CompanyLogosSection />
+      <CurrentlySection />
       <ExperienceSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <GraphicDesignSection />
-      {/* <CreativeWritingSection /> */} {/* Removed */}
+      <ResearchWritingSection />
+      <SoftwareProjectsSection />
+      <JourneySection />
+      <WritingSection />
+      <CreativeSection />
       <ContactSection />
-    </div>
+      <SiteReachSection />
+    </>
   );
 }
-

@@ -1,160 +1,207 @@
-// src/components/sections/projects.tsx
 "use client";
 
 import { useState, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Github, FileText, BookOpenText, LinkIcon } from 'lucide-react';
+import { Github, FileText, BookOpenText, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { ProjectCard } from '@/components/project-card';
-import { CreativePieceCard } from '@/components/creative-piece-card';
 import { allProjectsData } from '@/data/projects';
-import { creativeWritingPieces } from '@/data/creative-writing';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
-import { ParallaxSectionHeader } from '@/components/parallax-section-header';
-import { SectionTitle } from '@/components/section-title';
+import { Section, SectionHeading } from '@/components/section';
 import { Badge } from '@/components/ui/badge';
+import { siteConfig } from '@/lib/site-config';
 import type { Project } from '@/types/portfolio';
 
-function ResearchPaperItem({ paper, index }: { paper: Project, index: number }) {
+function ResearchWritingItem({ paper, index }: { paper: Project; index: number }) {
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ triggerOnce: true });
   const yearMatch = paper.publication?.match(/\b(\d{4})\b/);
   const year = yearMatch ? yearMatch[1] : null;
-  
-  // Prioritize DOI link if available, otherwise use projectUrl for download/view.
   const displayLink = paper.doiLink || paper.projectUrl;
-  const linkText = paper.doiLink ? 'View Publication' : (paper.projectUrl ? 'Download / Read More' : '');
-  const LinkIcon = paper.doiLink ? BookOpenText : FileText;
+  const linkText = paper.doiLink ? 'View publication' : 'Read';
+  const Icon = paper.doiLink ? BookOpenText : FileText;
 
   return (
-    <div 
+    <div
       ref={ref}
-      key={paper.id} 
       className={cn(
-        "p-4 border border-border rounded-lg bg-card/50 shadow-sm hover:shadow-md transition-all duration-500 ease-out",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        'academic-card p-5 transition-all duration-700 ease-out md:p-6',
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
       )}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      style={{ transitionDelay: `${index * 90}ms` }}
     >
-      <h4 className="text-lg font-semibold text-primary mb-1">{paper.title}</h4>
-      <p className="text-sm text-muted-foreground">
-        {paper.authors?.join(', ')}{year ? ` • ${year}` : ''}
-      </p>
-      <div className="text-sm text-muted-foreground mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <span className="italic">{paper.publication}</span>
-        {displayLink && linkText && (
-          <Button asChild variant="link" size="sm" className="text-primary hover:underline p-0 mt-1 sm:mt-0 sm:ml-2 self-start sm:self-center">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        {paper.label && (
+          <span className="rounded-full border border-gold/50 bg-secondary/10 px-2.5 py-0.5 text-xs font-medium text-secondary">
+            {paper.label}
+          </span>
+        )}
+        {year && <span className="text-xs text-muted-foreground">{year}</span>}
+      </div>
+      <h3 className="font-serif text-lg font-semibold leading-snug text-foreground">
+        {paper.title}
+      </h3>
+      {paper.authors && paper.authors.length > 0 && (
+        <p className="mt-1 text-sm text-muted-foreground">{paper.authors.join(', ')}</p>
+      )}
+      {paper.publication && (
+        <p className="mt-0.5 text-sm italic text-muted-foreground">{paper.publication}</p>
+      )}
+      {paper.shortDescription && (
+        <p className="mt-3 text-sm leading-relaxed text-foreground/90">{paper.shortDescription}</p>
+      )}
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-1.5">
+          {paper.tags.map((tag) => (
+            <Badge
+              key={tag}
+              variant="secondary"
+              className="bg-muted text-xs font-normal text-foreground/80"
+            >
+              {tag}
+            </Badge>
+          ))}
+        </div>
+        {displayLink && (
+          <Button asChild variant="link" size="sm" className="h-auto p-0 text-primary">
             <Link href={displayLink} target="_blank" rel="noopener noreferrer">
-              <LinkIcon className="mr-1.5 h-4 w-4" />
+              <Icon className="mr-1.5 h-4 w-4" />
               {linkText}
             </Link>
           </Button>
         )}
       </div>
-      {paper.shortDescription && (
-        <p className="text-sm text-foreground mt-2 line-clamp-3">{paper.shortDescription}</p>
-      )}
-      {paper.tags && paper.tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-2">
-          {paper.tags.map((tag: string) => (
-            <Badge key={tag} variant="secondary" className="text-xs">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
 
-export function ProjectsSection() {
+function ArchiveItem({ project, index }: { project: Project; index: number }) {
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ triggerOnce: true });
+  const link = project.projectUrl || project.repoUrl;
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        'flex flex-col rounded-md border border-border/70 bg-card/60 p-4 transition-all duration-500 ease-out hover:border-secondary/50',
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      )}
+      style={{ transitionDelay: `${(index % 6) * 60}ms` }}
+    >
+      <h4 className="font-serif text-base font-semibold text-foreground">{project.title}</h4>
+      <p className="mt-1 line-clamp-2 flex-grow text-sm text-muted-foreground">
+        {project.shortDescription}
+      </p>
+      <div className="mt-3 flex items-center gap-3">
+        {project.repoUrl && (
+          <Link
+            href={project.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-primary"
+          >
+            <Github className="h-3.5 w-3.5" /> Source
+          </Link>
+        )}
+        {project.projectUrl && (
+          <Link
+            href={project.projectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-primary"
+          >
+            <ExternalLink className="h-3.5 w-3.5" /> Live
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export function ResearchWritingSection() {
+  const researchPapers = useMemo(
+    () => allProjectsData.filter((p) => p.category === 'Research Papers'),
+    []
+  );
+
+  if (researchPapers.length === 0) return null;
+
+  return (
+    <Section id="research-writing">
+      <SectionHeading
+        eyebrow="Selected Research Writing"
+        title="Publications & research writing"
+        description="A mix of peer-reviewed journal articles, conference work, and earlier student writing. Each item is labeled by type so its stage and venue are clear."
+      />
+      <div className="grid gap-5 md:grid-cols-2">
+        {researchPapers.map((paper, index) => (
+          <ResearchWritingItem key={paper.id} paper={paper} index={index} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+export function SoftwareProjectsSection() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const regularProjects = useMemo(() => {
-    return allProjectsData.filter(project => project.category !== 'Research Papers');
-  }, []);
-
-  const researchPapers = useMemo(() => {
-    return allProjectsData.filter(project => project.category === 'Research Papers');
-  }, []);
-
-  if (!mounted) {
-    return (
-      <section id="projects" className="py-16 md:py-24 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <SectionTitle title="My Papers, Projects & Writing" highlight="Papers" />
-          <div className="animate-pulse">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-muted rounded-lg h-96"></div> 
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const featured = useMemo(
+    () => allProjectsData.filter((p) => p.category !== 'Research Papers' && p.featured),
+    []
+  );
+  const archive = useMemo(
+    () => allProjectsData.filter((p) => p.category !== 'Research Papers' && !p.featured),
+    []
+  );
 
   return (
-    <section id="projects" className="py-16 md:py-24 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <SectionTitle title="My Papers, Projects & Writing" highlight="Papers" />
-        
-        {researchPapers.length > 0 && (
-          <>
-            <SectionTitle title="Research Papers" highlight="Papers" className="mb-8" />
-            <div className="space-y-6 max-w-3xl mx-auto mt-12">
-              {researchPapers.map((paper, index) => (
-                <ResearchPaperItem paper={paper} index={index} key={paper.id} />
-              ))}
-            </div>
-          </>
-        )}
+    <Section id="projects" tone="muted">
+      <SectionHeading
+        eyebrow="Selected Software Projects"
+        title="Things I have built"
+        description="Independent and course projects spanning machine learning, data science, and the web."
+      />
 
-        {regularProjects.length > 0 && (
-          <>
-            <SectionTitle title="Software Projects" highlight="Projects" className="text-2xl md:text-3xl mb-8 mt-2" />
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-              {regularProjects.map((project, index) => (
-                <ProjectCard project={project} key={project.id} index={index} />
-              ))}
-            </div>
-            <div className="text-center my-10">
-              <p className="text-muted-foreground mb-3">To see more of my projects...</p>
-              <Button asChild size="lg" className="shadow-md hover:shadow-lg transition-shadow">
-                <Link href="https://github.com/Mohanad-Elagan" target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-5 w-5" />
-                  Visit my GitHub
-                </Link>
-              </Button>
-            </div>
-          </>
-        )}
+      {mounted ? (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {featured.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="h-80 animate-pulse rounded-lg bg-muted" />
+          ))}
+        </div>
+      )}
 
-        {creativeWritingPieces.length > 0 && (
-          <>
-            <SectionTitle title="Creative Writing" highlight="Writing" className="text-2xl md:text-3xl mb-2 mt-16 pt-8 border-t" />
-            <p className="text-center text-muted-foreground italic mb-12"> 
-              Thinking about how I could alter the world with a broken pencil and a tearful paper.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> 
-              {creativeWritingPieces.map((piece, index) => (
-                <CreativePieceCard key={piece.id} piece={piece} index={index} />
-              ))}
-            </div>
-          </>
-        )}
+      {archive.length > 0 && (
+        <div className="mt-14">
+          <div className="mb-6 flex items-center gap-3">
+            <h3 className="font-serif text-xl font-semibold text-foreground">
+              Earlier projects &amp; archive
+            </h3>
+            <span className="h-px flex-grow bg-border" aria-hidden="true" />
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {archive.map((project, index) => (
+              <ArchiveItem key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+      )}
 
-        {(regularProjects.length === 0 && researchPapers.length === 0 && creativeWritingPieces.length === 0) && (
-          <p className="text-center text-muted-foreground text-lg mt-12">
-            No projects, papers, or creative writing pieces to display at the moment.
-          </p>
-        )}
+      <div className="mt-12 text-center">
+        <Button asChild size="lg" variant="outline" className="gap-2 border-gold/60">
+          <Link href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">
+            <Github className="h-5 w-5" /> More on GitHub
+          </Link>
+        </Button>
       </div>
-    </section>
+    </Section>
   );
 }

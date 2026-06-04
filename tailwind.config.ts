@@ -43,9 +43,12 @@ export default {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-  			border: 'hsl(var(--border))',
+  		border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
+  			gold: 'hsl(var(--gold))',
+  			burgundy: 'hsl(var(--burgundy))',
+  			navy: 'hsl(var(--navy))',
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',
@@ -97,8 +100,12 @@ export default {
   			scroll: 'scroll 60s linear infinite',
   		},
       fontFamily: {
-        sans: ['var(--font-geist-sans)'],
-        mono: ['var(--font-geist-mono)'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
+      },
+      maxWidth: {
+        prose: '68ch',
       },
   	}
   },

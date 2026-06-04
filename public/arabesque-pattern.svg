@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <g stroke="currentColor" stroke-width="1" fill="none">
+    <!-- center 8-point star -->
+    <rect x="24" y="24" width="32" height="32" transform="rotate(0 40 40)" />
+    <rect x="24" y="24" width="32" height="32" transform="rotate(45 40 40)" />
+    <!-- corner stars (quarters) to tile seamlessly -->
+    <rect x="-16" y="-16" width="32" height="32" transform="rotate(0 0 0)" />
+    <rect x="-16" y="-16" width="32" height="32" transform="rotate(45 0 0)" />
+    <rect x="64" y="-16" width="32" height="32" transform="rotate(0 80 0)" />
+    <rect x="64" y="-16" width="32" height="32" transform="rotate(45 80 0)" />
+    <rect x="-16" y="64" width="32" height="32" transform="rotate(0 0 80)" />
+    <rect x="-16" y="64" width="32" height="32" transform="rotate(45 0 80)" />
+    <rect x="64" y="64" width="32" height="32" transform="rotate(0 80 80)" />
+    <rect x="64" y="64" width="32" height="32" transform="rotate(45 80 80)" />
+  </g>
+</svg>

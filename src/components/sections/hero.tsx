@@ -1,104 +1,117 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { ArrowDown } from 'lucide-react';
+import { BookMarked, Mail } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
-  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Common content rendering logic
-  const heroContent = (
-    <div className={cn(
-      "relative z-10 container mx-auto px-4 transition-all duration-1000 ease-out",
-      mounted ? "opacity-100 translate-y-0 delay-300" : "opacity-0 translate-y-10"
-    )}>
-      <div className="max-w-3xl mx-auto">
-        <div className="relative w-36 h-36 md:w-44 md:h-44 mx-auto mb-8 rounded-full overflow-hidden shadow-lg border-4 border-primary/50">
-          <Image 
-            src="/img/profile.jpg" 
-            alt="Mohanad Elagan" 
-            fill 
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-            data-ai-hint="professional photo Mohanad"
-            priority
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.srcset = 'https://picsum.photos/seed/mohanadprofile/180/180';
-              target.src = 'https://picsum.photos/seed/mohanadprofile/180/180';
-            }}
-          />
-        </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-white"> {/* Changed text color for contrast */}
-          Hi, I&apos;m <span className="text-primary">Mohanad Elagan</span>
-        </h1>
-        <p className="text-lg md:text-xl text-slate-200 mb-10 font-bold"> {/* Changed text color for contrast and made bold */}
-          Developer/Researcher - Graphic Designer - Writer
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button size="lg" asChild className="shadow-md hover:shadow-lg transition-shadow">
-            <Link href="#projects">
-              View My Papers & Projects <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
-            </Link>
-          </Button>
-          <Button size="lg" variant="secondary" asChild className="shadow-md hover:shadow-lg transition-shadow">
-            <Link href="#contact">
-              Get In Touch
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
-
-  // SSR/Pre-hydration: Use static Tailwind classes for the gradient
-  if (!mounted) {
-    return (
-      <section 
-        id="hero" 
-        ref={heroRef}
-        className="relative py-20 md:py-32 text-center bg-gradient-to-br from-background to-muted/30 rounded-xl shadow-inner_lg overflow-hidden"
-      >
-         <div className="absolute inset-0 z-[-1] bg-gray-800"></div>
-        {heroContent}
-      </section>
-    );
-  }
-
-  // Client-side rendered with background image
   return (
-    <section 
-      id="hero" 
-      ref={heroRef}
-      className="relative py-20 md:py-32 text-center rounded-xl shadow-inner_lg overflow-hidden"
+    <section
+      id="home"
+      className="relative scroll-mt-20 overflow-hidden border-b border-border/60"
     >
-      <div className="absolute inset-0 z-[-1]">
-        <Image
-          src="/img/background.jpg" // Changed image source
-          alt="Abstract technology background" // Updated alt text
-          fill
-          style={{ objectFit: 'cover' }}
-          quality={100}
-          priority
-          data-ai-hint="tech background abstract" // Updated data-ai-hint
-           onError={(e) => { // Fallback if local background image fails
-              const target = e.target as HTMLImageElement;
-              target.srcset = 'https://picsum.photos/seed/hero-fallback-bg/1920/1080';
-              target.src = 'https://picsum.photos/seed/hero-fallback-bg/1920/1080';
-            }}
-        />
-        <div className="absolute inset-0 bg-black/60"></div>
+      {/* Subtle arabesque watermark */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04] arabesque-watermark"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-secondary/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="container relative mx-auto max-w-6xl px-5 py-16 sm:px-6 md:py-24">
+        <div className="grid items-center gap-10 md:grid-cols-[1.4fr_1fr] md:gap-14">
+          {/* Text column */}
+          <div
+            className={cn(
+              'order-2 text-center transition-all duration-1000 ease-out md:order-1 md:text-left',
+              mounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            )}
+          >
+            <div className="mb-4 flex items-center justify-center gap-3 md:justify-start">
+              <span className="h-px w-8 bg-gold/70" aria-hidden="true" />
+              <p className="eyebrow">Berea College · Undergraduate Researcher</p>
+            </div>
+
+            <h1 className="font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
+              Mohanad Elagan
+            </h1>
+
+            <p className="mt-4 text-lg font-medium text-primary md:text-xl">
+              Clinical Psychology · Biomedical AI · Neuroscience
+            </p>
+
+            <p className="mx-auto mt-6 max-w-prose text-base leading-relaxed text-muted-foreground md:mx-0 md:text-lg">
+              I am an undergraduate at Berea College studying neuroscience,
+              mathematics, and computer science, with research interests in
+              clinical psychology, biomedical AI, and patient-centered research.
+              My work connects behavioral science, medical data, and research
+              communication.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row md:items-start">
+              <Button asChild size="lg" className="w-full gap-2 shadow-sm sm:w-auto">
+                <Link href="#research-writing">
+                  <BookMarked className="h-4 w-4" /> Selected Research
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full gap-2 border-gold/60 sm:w-auto"
+              >
+                <Link href="#contact">
+                  <Mail className="h-4 w-4" /> Contact Me
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Portrait column */}
+          <div
+            className={cn(
+              'order-1 flex justify-center transition-all duration-1000 ease-out md:order-2 md:justify-end',
+              mounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            )}
+          >
+            <div className="relative">
+              <div
+                className="absolute -inset-3 rounded-2xl border border-gold/40"
+                aria-hidden="true"
+              />
+              <div className="relative h-52 w-52 overflow-hidden rounded-2xl border border-border shadow-md sm:h-60 sm:w-60 md:h-72 md:w-72">
+                <Image
+                  src="/img/profile.jpg"
+                  alt="Portrait of Mohanad Elagan"
+                  fill
+                  sizes="(max-width: 768px) 240px, 288px"
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  priority
+                />
+              </div>
+              <span
+                className="absolute -bottom-3 -right-3 h-10 w-10 rounded-md border-b-2 border-r-2 border-primary/50"
+                aria-hidden="true"
+              />
+              <span
+                className="absolute -left-3 -top-3 h-10 w-10 rounded-md border-l-2 border-t-2 border-primary/50"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      {heroContent}
     </section>
   );
 }
-
