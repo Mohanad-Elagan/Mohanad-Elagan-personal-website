@@ -4,7 +4,6 @@ import { Inter, Source_Serif_4 } from 'next/font/google';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
-import { ThemeProvider } from '@/components/theme-provider';
 import { ScrollToTopButton } from '@/components/scroll-to-top-button';
 import { cn } from '@/lib/utils';
 
@@ -40,26 +39,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body
-        className={cn(inter.variable, sourceSerif.variable, 'font-sans')}
-        suppressHydrationWarning
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex min-h-screen flex-col">
-            <div className="arabesque-band w-full" aria-hidden="true" />
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
-          <ScrollToTopButton />
-        </ThemeProvider>
+    <html lang="en" className="scroll-smooth">
+      <body className={cn(inter.variable, sourceSerif.variable, 'font-sans')}>
+        <div className="flex min-h-screen flex-col">
+          <div className="arabesque-band w-full" aria-hidden="true" />
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
+        <Toaster />
+        <ScrollToTopButton />
       </body>
     </html>
   );

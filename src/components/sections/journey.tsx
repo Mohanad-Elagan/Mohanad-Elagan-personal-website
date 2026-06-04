@@ -32,7 +32,7 @@ export function JourneySection() {
         eyebrow="Journey"
         title="Cairo → Berea → Boston"
         align="center"
-        description="My path has grown from early biomedical research experiences in Egypt to interdisciplinary research training in the United States, connecting clinical questions with computation, neuroscience, and communication."
+        description="My path has grown from early biomedical research experiences in Egypt to interdisciplinary research training in the United States, connecting clinical questions with psychology, neuroscience, and computation."
       />
 
       <div

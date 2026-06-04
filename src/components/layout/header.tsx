@@ -1,12 +1,12 @@
 "use client";
 
 import Link from 'next/link';
-import { Menu, Brain } from 'lucide-react';
+import { Menu, Brain, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
-import { ThemeToggleButton } from '@/components/theme-toggle-button';
 import { cn } from '@/lib/utils';
+import { siteConfig } from '@/lib/site-config';
 
 const navItems = [
   { href: '#home', label: 'Home', id: 'home' },
@@ -56,6 +56,20 @@ export function Header() {
     </Link>
   );
 
+  const ScholarButton = (
+    <Button asChild size="sm" variant="outline" className="gap-1.5 border-gold/60 shadow-sm">
+      <Link
+        href={siteConfig.links.scholar}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Google Scholar profile"
+      >
+        <GraduationCap className="h-4 w-4" />
+        <span className="hidden sm:inline">Scholar</span>
+      </Link>
+    </Button>
+  );
+
   if (!isMounted) {
     return (
       <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
@@ -102,13 +116,11 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
-          <ThemeToggleButton />
-        </div>
+        <div className="hidden items-center gap-2 lg:flex">{ScholarButton}</div>
 
         {/* Mobile Navigation */}
         <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggleButton />
+          {ScholarButton}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" aria-label="Open menu">
@@ -134,6 +146,16 @@ export function Header() {
                     </SheetClose>
                   );
                 })}
+                <SheetClose asChild>
+                  <Link
+                    href={siteConfig.links.scholar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 flex items-center justify-center gap-2 rounded-md border border-gold/60 px-3 py-2.5 text-base font-medium text-foreground"
+                  >
+                    <GraduationCap className="h-4 w-4" /> Google Scholar
+                  </Link>
+                </SheetClose>
               </nav>
             </SheetContent>
           </Sheet>
